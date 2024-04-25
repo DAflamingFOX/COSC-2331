@@ -1,0 +1,445 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.Toolkit;
+import java.awt.GridBagLayout;
+import javax.swing.JLabel;
+import java.awt.GridBagConstraints;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.BoxLayout;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
+import javax.swing.Action;
+import java.awt.event.ActionListener;
+import javax.swing.JSeparator;
+import javax.swing.PopupFactory;
+
+public class App {
+
+	private JFrame frame;
+	private final Action circlePopup = new SwingActionCircle();
+	private final Action cubePopup = new SwingActionCube();
+	private final Action trianglePopup = new SwingActionTriangle();
+	private final Action rectangularPrismPopup = new SwingActionRectangularPrism();
+	private final Action squarePopup = new SwingActionSquare();
+	private final Action cylinderPopup = new SwingActionCylinder();
+	private final Action rectanglePopup = new SwingActionRectangle();
+	private final Action conePopup = new SwingActionCone();
+	private final Action parallelogramPopup = new SwingActionParallelogram();
+	private final Action spherePopup = new SwingActionSphere();
+	private final Action trapezoidPopup = new SwingActionTrapezoid();
+	private final Action hemispherePopup = new SwingActionHemisphere();
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					App window = new App();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public App() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		
+		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(App.class.getResource("/resources/cal_icon_3.png")));
+		frame.setBounds(100, 100, 600, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout(0, 10));
+		
+		JLabel titleLabel = new JLabel("2D and 3D Shapes Surface Area Calculator Menu");
+		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		titleLabel.setForeground(new Color(0, 128, 255));
+		titleLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
+		frame.getContentPane().add(titleLabel, BorderLayout.NORTH);
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{10, 200, 0, 200, 10, 0};
+		gbl_panel.rowHeights = new int[]{10, 40, 10, 50, 50, 50, 50, 50, 50, 10, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
+		
+		JSeparator separator_2 = new JSeparator();
+		GridBagConstraints gbc_separator_2 = new GridBagConstraints();
+		gbc_separator_2.gridwidth = 5;
+		gbc_separator_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_separator_2.insets = new Insets(0, 0, 5, 5);
+		gbc_separator_2.gridx = 0;
+		gbc_separator_2.gridy = 0;
+		panel.add(separator_2, gbc_separator_2);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setOrientation(SwingConstants.VERTICAL);
+		GridBagConstraints gbc_separator_1 = new GridBagConstraints();
+		gbc_separator_1.fill = GridBagConstraints.VERTICAL;
+		gbc_separator_1.gridheight = 10;
+		gbc_separator_1.insets = new Insets(0, 0, 0, 5);
+		gbc_separator_1.gridx = 2;
+		gbc_separator_1.gridy = 0;
+		panel.add(separator_1, gbc_separator_1);
+		
+		JLabel twoDLabel = new JLabel("2D Shapes");
+		twoDLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		twoDLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		GridBagConstraints gbc_twoDLabel = new GridBagConstraints();
+		gbc_twoDLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_twoDLabel.fill = GridBagConstraints.HORIZONTAL;
+		gbc_twoDLabel.gridx = 1;
+		gbc_twoDLabel.gridy = 1;
+		panel.add(twoDLabel, gbc_twoDLabel);
+		
+		JLabel threeDLabel = new JLabel("3D Shapes");
+		threeDLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		threeDLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		GridBagConstraints gbc_threeDLabel = new GridBagConstraints();
+		gbc_threeDLabel.fill = GridBagConstraints.HORIZONTAL;
+		gbc_threeDLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_threeDLabel.gridx = 3;
+		gbc_threeDLabel.gridy = 1;
+		panel.add(threeDLabel, gbc_threeDLabel);
+		
+		JButton btnCircle = new JButton("Circle");
+		btnCircle.setAction(circlePopup);
+		btnCircle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCircle.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnCircle = new GridBagConstraints();
+		gbc_btnCircle.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnCircle.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCircle.gridx = 1;
+		gbc_btnCircle.gridy = 3;
+		panel.add(btnCircle, gbc_btnCircle);
+		
+		JButton btnCube = new JButton("Cube");
+		btnCube.setAction(cubePopup);
+		btnCube.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCube.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnCube = new GridBagConstraints();
+		gbc_btnCube.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnCube.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCube.gridx = 3;
+		gbc_btnCube.gridy = 3;
+		panel.add(btnCube, gbc_btnCube);
+		
+		JButton btnTriangle = new JButton("Triangle");
+		btnTriangle.setAction(trianglePopup);
+		btnTriangle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnTriangle.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnTriangle = new GridBagConstraints();
+		gbc_btnTriangle.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnTriangle.insets = new Insets(0, 0, 5, 5);
+		gbc_btnTriangle.gridx = 1;
+		gbc_btnTriangle.gridy = 4;
+		panel.add(btnTriangle, gbc_btnTriangle);
+		
+		JButton btnRectangularPrism = new JButton("Rectangular Prism");
+		btnRectangularPrism.setAction(rectangularPrismPopup);
+		btnRectangularPrism.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRectangularPrism.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnRectangularPrism = new GridBagConstraints();
+		gbc_btnRectangularPrism.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnRectangularPrism.insets = new Insets(0, 0, 5, 5);
+		gbc_btnRectangularPrism.gridx = 3;
+		gbc_btnRectangularPrism.gridy = 4;
+		panel.add(btnRectangularPrism, gbc_btnRectangularPrism);
+		
+		JButton btnSquare = new JButton("Square");
+		btnSquare.setAction(squarePopup);
+		btnSquare.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSquare.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnSquare = new GridBagConstraints();
+		gbc_btnSquare.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnSquare.insets = new Insets(0, 0, 5, 5);
+		gbc_btnSquare.gridx = 1;
+		gbc_btnSquare.gridy = 5;
+		panel.add(btnSquare, gbc_btnSquare);
+		
+		JSeparator separator = new JSeparator();
+		separator.setOrientation(SwingConstants.VERTICAL);
+		GridBagConstraints gbc_separator = new GridBagConstraints();
+		gbc_separator.insets = new Insets(0, 0, 5, 5);
+		gbc_separator.gridx = 2;
+		gbc_separator.gridy = 5;
+		panel.add(separator, gbc_separator);
+		
+		JButton btnCylinder = new JButton("Cylinder");
+		btnCylinder.setAction(cylinderPopup);
+		btnCylinder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCylinder.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnCylinder = new GridBagConstraints();
+		gbc_btnCylinder.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnCylinder.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCylinder.gridx = 3;
+		gbc_btnCylinder.gridy = 5;
+		panel.add(btnCylinder, gbc_btnCylinder);
+		
+		JButton btnRectangle = new JButton("Rectangle");
+		btnRectangle.setAction(rectanglePopup);
+		btnRectangle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnRectangle.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnRectangle = new GridBagConstraints();
+		gbc_btnRectangle.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnRectangle.insets = new Insets(0, 0, 5, 5);
+		gbc_btnRectangle.gridx = 1;
+		gbc_btnRectangle.gridy = 6;
+		panel.add(btnRectangle, gbc_btnRectangle);
+		
+		JButton btnCone = new JButton("Cone");
+		btnCone.setAction(conePopup);
+		btnCone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCone.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnCone = new GridBagConstraints();
+		gbc_btnCone.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnCone.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCone.gridx = 3;
+		gbc_btnCone.gridy = 6;
+		panel.add(btnCone, gbc_btnCone);
+		
+		JButton btnParallelogram = new JButton("Parallelogram");
+		btnParallelogram.setAction(parallelogramPopup);
+		btnParallelogram.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnParallelogram.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnParallelogram = new GridBagConstraints();
+		gbc_btnParallelogram.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnParallelogram.insets = new Insets(0, 0, 5, 5);
+		gbc_btnParallelogram.gridx = 1;
+		gbc_btnParallelogram.gridy = 7;
+		panel.add(btnParallelogram, gbc_btnParallelogram);
+		
+		
+		JButton btnSphere = new JButton("Sphere");
+		btnSphere.setAction(spherePopup);
+		btnSphere.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSphere.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnSphere = new GridBagConstraints();
+		gbc_btnSphere.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnSphere.insets = new Insets(0, 0, 5, 5);
+		gbc_btnSphere.gridx = 3;
+		gbc_btnSphere.gridy = 7;
+		panel.add(btnSphere, gbc_btnSphere);
+		
+		
+		JButton btnTrapezoid = new JButton("Trapezoid");
+		btnTrapezoid.setAction(trapezoidPopup);
+		btnTrapezoid.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnTrapezoid.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnTrapezoid = new GridBagConstraints();
+		gbc_btnTrapezoid.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnTrapezoid.insets = new Insets(0, 0, 5, 5);
+		gbc_btnTrapezoid.gridx = 1;
+		gbc_btnTrapezoid.gridy = 8;
+		panel.add(btnTrapezoid, gbc_btnTrapezoid);
+		
+		
+		JButton btnHemisphere = new JButton("Hemisphere");
+		btnHemisphere.setAction(hemispherePopup);
+		btnHemisphere.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnHemisphere.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_btnHemisphere = new GridBagConstraints();
+		gbc_btnHemisphere.insets = new Insets(0, 0, 5, 5);
+		gbc_btnHemisphere.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnHemisphere.gridx = 3;
+		gbc_btnHemisphere.gridy = 8;
+		panel.add(btnHemisphere, gbc_btnHemisphere);
+	}
+
+	private class SwingActionCircle extends AbstractAction {
+		public SwingActionCircle() {
+			putValue(NAME, "circle");
+			putValue(SHORT_DESCRIPTION, "Launch Circle Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Circle");
+			calculator.pack();
+			calculator.show();
+		}		
+	}
+	private class SwingActionCube extends AbstractAction {
+		public SwingActionCube() {
+			putValue(NAME, "cube");
+			putValue(SHORT_DESCRIPTION, "Launch cube Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Cube");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionTriangle extends AbstractAction {
+		public SwingActionTriangle() {
+			putValue(NAME, "triangle");
+			putValue(SHORT_DESCRIPTION, "Launch triangle Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Triangle");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionRectangularPrism extends AbstractAction {
+		public SwingActionRectangularPrism() {
+			putValue(NAME, "rectangular prism");
+			putValue(SHORT_DESCRIPTION, "Launch rectanular prism Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Rectangular Prism");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionSquare extends AbstractAction {
+		public SwingActionSquare() {
+			putValue(NAME, "square");
+			putValue(SHORT_DESCRIPTION, "Launch square Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Square");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionCylinder extends AbstractAction {
+		public SwingActionCylinder() {
+			putValue(NAME, "cylinder");
+			putValue(SHORT_DESCRIPTION, "Launch cylinder Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Cylinder");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionRectangle extends AbstractAction {
+		public SwingActionRectangle() {
+			putValue(NAME, "rectangle");
+			putValue(SHORT_DESCRIPTION, "Launch rectangle Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Rectangle");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionCone extends AbstractAction {
+		public SwingActionCone() {
+			putValue(NAME, "cone");
+			putValue(SHORT_DESCRIPTION, "Launch cone Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Cone");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionParallelogram extends AbstractAction {
+		public SwingActionParallelogram() {
+			putValue(NAME, "parallelogram");
+			putValue(SHORT_DESCRIPTION, "Launch parallelogram Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Parallelogram");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionSphere extends AbstractAction {
+		public SwingActionSphere() {
+			putValue(NAME, "sphere");
+			putValue(SHORT_DESCRIPTION, "Launch sphere Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Sphere");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionTrapezoid extends AbstractAction {
+		public SwingActionTrapezoid() {
+			putValue(NAME, "trapezoid");
+			putValue(SHORT_DESCRIPTION, "Launch trapezoid Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Trapezoid");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+	private class SwingActionHemisphere extends AbstractAction {
+		public SwingActionHemisphere() {
+			putValue(NAME, "hemisphere");
+			putValue(SHORT_DESCRIPTION, "Launch hemishpere Popup");
+		}
+		public void actionPerformed(ActionEvent e) {
+			CalculatorPopup calculator = new CalculatorPopup(frame, "Hemisphere");
+			calculator.pack();
+			calculator.show();
+		}
+	}
+}

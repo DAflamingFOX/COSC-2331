@@ -1,0 +1,21 @@
+import java.io.BufferedWriter;
+import java.io.File;
+
+public class Logger {
+	
+	private static boolean initialized = false;
+	private static BufferedWriter writer;
+	
+	private Logger() {}
+	
+	static void initializeIfNeeded() {
+		if (initialized) 
+			return;
+		
+		File output = new File("./output.log");
+		
+		
+	}
+	
+	
+}

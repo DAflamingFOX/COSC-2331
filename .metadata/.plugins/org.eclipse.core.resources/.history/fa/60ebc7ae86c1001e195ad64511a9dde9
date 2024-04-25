@@ -1,0 +1,26 @@
+package prob04;
+
+import java.util.Scanner;
+
+public class Problem04 {
+
+	public static void main(String[] args) {
+
+		Scanner userInput = new Scanner(System.in);
+		
+		System.out.println("Menu items\r\n"
+				+ "\r\n"
+				+ "Press 1 for Linear equations\r\n"
+				+ "Press 2 for the shopping bill\r\n"
+				+ "Press 3 for directions\r\n"
+				+ "Press 4 for square root and cube root of n numbers\r\n"
+				+ "Press 5 for QUIT");
+		
+		int choice = 0;
+		while(!(1 <= choice && choice <= 5)) {
+			
+		}
+		
+	}
+
+}

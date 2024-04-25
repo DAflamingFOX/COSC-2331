@@ -1,0 +1,40 @@
+package prob04;
+
+import java.util.Scanner;
+
+public class Problem04 {
+
+	public static void main(String[] args) {
+
+		Scanner userInput = new Scanner(System.in);
+		
+		
+		
+		int choice = 0;
+		boolean firstTime = true;
+		while(!(1 <= choice && choice <= 5)) {
+			if (!firstTime) {
+				System.out.println("Input " + choice + " is not valid!\n");
+			} else
+				firstTime = false;
+			System.out.println("Menu items\r\n"
+					+ "\r\n"
+					+ "Press 1 for Linear equations\r\n"
+					+ "Press 2 for the shopping bill\r\n"
+					+ "Press 3 for directions\r\n"
+					+ "Press 4 for square root and cube root of n numbers\r\n"
+					+ "Press 5 for QUIT\r\n");
+			choice = userInput.nextInt();
+		}
+		
+		switch(choice) {
+			default:
+			case 5:
+			System.exit(0);
+			case 1:
+				
+		}
+		
+	}
+
+}

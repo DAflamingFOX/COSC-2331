@@ -1,0 +1,11 @@
+
+public class Logger {
+	
+	private static boolean initialized = false;
+	
+	private Logger() {
+		
+	}
+	
+	
+}

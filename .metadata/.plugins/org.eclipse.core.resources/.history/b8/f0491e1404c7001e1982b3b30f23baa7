@@ -1,0 +1,33 @@
+package prob01;
+
+import java.util.Scanner;
+
+public class Problem01 {
+
+	public static void main(String[] args) {
+		
+		
+	Scanner input = new Scanner(System.in);
+	
+	System.out.println("Enter two integer values for D distance and N days separated by a single space.");
+	
+	// D - distance kilometers (one-way)
+	int d = input.nextInt();
+	// N - days
+	int n = input.nextInt();
+	
+	System.out.println("Enter Xa, Xb, and Xc separated by a single space.");
+	// Xa - Dollars for first Xb kilometer
+	int xa = input.nextInt();
+	// Xb - kilometer
+	int xb = input.nextInt();
+	// dollars per kilometer for rest of distance
+	int xc = input.nextInt();
+	
+	
+		
+		
+		
+	}
+
+}

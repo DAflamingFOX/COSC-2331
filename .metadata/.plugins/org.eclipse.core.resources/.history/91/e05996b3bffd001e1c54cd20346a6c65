@@ -1,0 +1,19 @@
+
+public class Logger {
+	
+	private static boolean initialized = false;
+	
+	private Logger() {
+		
+	}
+	
+	static void initializeIfNeeded() {
+		if (initialized) 
+			return;
+		
+		
+		
+	}
+	
+	
+}
