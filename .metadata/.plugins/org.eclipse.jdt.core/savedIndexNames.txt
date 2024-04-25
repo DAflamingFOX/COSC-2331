@@ -5,7 +5,6 @@ INDEX VERSION 1.134+C:\Users\ffejs\Documents\COSC-2331\eclipse-workspace\.metada
 1865797976.index
 2238148576.index
 890962878.index
-3413725848.index
 4066402166.index
 453245507.index
 476986970.index
